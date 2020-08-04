@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home!</title>
+</head>
+<body>
+<h2>Your profile: {{ user }}</h2>
+
+<h3>Publish your vacancy!</h3>
+<form method="post"> {% csrf_token %}
+    <table>{{ vacancy_create_form.as_table }}</table>
+    <button type="submit">publish!</button>
+</form>
+
+<p>Your resumes:</p>
+{% for resume in user_resumes %}
+<div>{{ resume.description }}</div>
+{% endfor %}
+
+<p>Your vacancies:</p>
+{% for vacancy in user_vacancies %}
+<div>{{ vacancy.description }}</div>
+{% endfor %}
+
+</body>
+</html>
